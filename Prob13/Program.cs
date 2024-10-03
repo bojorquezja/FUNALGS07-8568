@@ -1,7 +1,7 @@
 ﻿int n, diasMes, empleados1 = 0, empleados2 = 0;
 double totalSueldos = 0;
 
-Console.Write("Ingrese la cantidad de empleados: ");
+Console.WriteLine("Ingresar numero de empleados: ");
 n = int.Parse(Console.ReadLine());
 
 Console.Write("Ingrese la cantidad de días del mes: ");
@@ -37,3 +37,4 @@ for (int i = 0; i < n; i++) {
 Console.WriteLine($"\nMonto total de sueldos: {totalSueldos:C2}");
 Console.WriteLine($"Empleados que ganan entre 2500 y 3500: {empleados1}");
 Console.WriteLine($"Empleados que ganan menos de 1000 o más de 4000: {empleados2}");
+
