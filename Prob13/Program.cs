@@ -1,2 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+int n1;
+Console.WriteLine("INGRESA UN NUMERO");
+n1=int.Parse(Console.ReadLine());
+
+Console.WriteLine();
