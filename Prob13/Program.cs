@@ -1,42 +1,40 @@
-﻿int nu, dias, faltas = 0, cont1 = 0, cont2 = 0;
-double sueld = 0, pag_d, suma = 0, suel_t = 0, suel_t1 = 0, suel_t2 = 0, suma1 = 0, suma2 = 0;
-string text;
+﻿int n, diasMes, empleados1 = 0, empleados2 = 0;
+double totalSueldos = 0;
+
 Console.WriteLine("Ingresar numero de empleados: ");
-nu = int.Parse(Console.ReadLine());
-for (int i = 1; i <= nu; i++)
-{
-    Console.WriteLine("Ingresa el nombre del colaborador: ");
-    text = Console.ReadLine();
-    Console.WriteLine("Ingresar sueldo del colaborador: ");
-    sueld = double.Parse(Console.ReadLine());
+n = int.Parse(Console.ReadLine());
 
-    if (sueld > 2500 && sueld < 3500)
-    {
-        Console.WriteLine("Ingresar numero de dias laborados: ");
-        dias = int.Parse(Console.ReadLine());
-        Console.WriteLine("Numero de faltas: ");
-        faltas = int.Parse(Console.ReadLine());
+Console.Write("Ingrese la cantidad de días del mes: ");
+diasMes = int.Parse(Console.ReadLine());
 
-        pag_d = sueld / 30;
-        suel_t1 = sueld - (faltas * pag_d);
-        suma1 = suma1 + suel_t1;
-        cont1++;
+for (int i = 0; i < n; i++) {
+    Console.WriteLine($"\nEmpleado {i + 1}:");
+    Console.Write("Nombre: ");
+    string nombre = Console.ReadLine();
+
+    Console.Write("Días que faltó: ");
+    int diasFaltados = int.Parse(Console.ReadLine());
+
+    Console.Write("Salario mensual: ");
+    double salarioMensual = double.Parse(Console.ReadLine());
+
+    double sueldoDiario = salarioMensual / diasMes;
+    double sueldoFinal = salarioMensual - (diasFaltados * sueldoDiario);
+
+    totalSueldos += sueldoFinal;
+
+    if (sueldoFinal >= 2500 && sueldoFinal <= 3500) {
+        empleados1++;
     }
-    else if (sueld < 1000 || sueld > 4000)
-    {
-        Console.WriteLine("Ingresar numero de dias laborados: ");
-        dias = int.Parse(Console.ReadLine());
-        Console.WriteLine("Numero de faltas: ");
-        faltas = int.Parse(Console.ReadLine());
 
-        pag_d = sueld / 30;
-        suel_t2 = sueld - (faltas * pag_d);
-        suma2 = suma2 + suel_t2;
-        cont2++;
+    if (sueldoFinal < 1000 || sueldoFinal > 4000) {
+        empleados2++;
     }
-    suma = suma1 + suma2;
 
+    Console.WriteLine($"Sueldo final de {nombre}: {sueldoFinal:C2}");
 }
-Console.WriteLine("La suma total de sueldos de empleados es: " + suma);
-Console.WriteLine("Numero de empleados que ganan entre 2500 y 3500: " + cont1);
-Console.WriteLine("Numero de empleados que ganan menos de 1000 o más de 4000: " + cont2);
+
+Console.WriteLine($"\nMonto total de sueldos: {totalSueldos:C2}");
+Console.WriteLine($"Empleados que ganan entre 2500 y 3500: {empleados1}");
+Console.WriteLine($"Empleados que ganan menos de 1000 o más de 4000: {empleados2}");
+
